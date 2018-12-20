@@ -1,0 +1,206 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>登录</title>
+	<!--
+	<link rel="stylesheet" type="text/css" href="styles.css">
+	-->
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap.css" >
+	<script type="text/javascript" src="../js/jquery-1.9.1.js" ></script>
+	<script type="text/javascript" src="../js/bootstrap.js" ></script>
+	
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			body{
+				height: 949px;
+				width: 1920px;
+				background-color: rgb(255,255,255);
+				overflow: hidden;
+			}
+			.margin10{
+			margin-top: 10px;
+			margin-bottom: 10px;
+			}
+			.margin20{
+			margin-top: 20px;
+			margin-bottom: 20px;
+			}
+			.h74{
+			height: 90px;
+			line-height: 90px;
+			}
+			.login{
+				height:468px;
+				width:360px;
+				text-align: center;
+				margin-top: 50%;
+				background-color: rgb(253,253,253);
+			}
+			.center{
+				text-align: center;
+			}
+			input{
+				text-indent: 10px;
+			}
+			.center{
+			text-align: center;
+			
+			}
+			.h470{
+			height: 470px;
+			overflow: hidden;
+			background-color: rgb(216,17,38);
+			}
+			.ts{
+			display:inline-block;
+				width:60px;
+				text-indent:0px;
+				border: none;
+				border-right: 1px solid black;
+			
+			}
+			.white{
+				background: white;
+				height: 80%;
+				margin-top: 50px;
+			}
+		</style>
+	
+		<script type="text/javascript">
+			function dl(){
+				$("#dl").click(function(){
+					$("#zc").css("color","black");
+					$(this).css("color","rgb(228,57,60)");
+					$("#zhuce").hide();
+					$("#denglu").show();
+				});
+			}
+			function zc(){
+				$("#zc").click(function(){
+					$("#dl").css("color","black");
+					$(this).css("color","rgb(228,57,60)");
+					$("#denglu").hide();
+					$("#zhuce").show();
+				});
+			}
+			
+			$(function(){
+				$("#dl").css("color","rgb(228,57,60)");
+				$("#zc").css("color","black");
+				$("#zhuce").hide();
+					dl();
+					zc();
+			});
+		</script>
+
+  </head>
+  
+  <body>
+	  <div class="container-fluid">
+	  	<div class="container">
+	  		<div class="row margin10">
+	  			<div class="col-md-1 col-lg-1 h74 ">
+	  			<img  src="../img/logo.png" />
+	  			</div>
+	  		</div>
+	  	</div>
+	  </div>
+	  
+	  <div class="container-fluid h470" >
+	  		<div class="container">
+		  		<div class="row">
+		  			<div class="col-md-7 col-lg-7 h470 ">
+		  				<img  src="../img/dlzc.png" />
+		  			</div>
+		  			<div class="col-md-5 col-lg-5 h470 white" >
+		  					<div>
+  							<div>
+		  						<div style="margin-top: 25px; margin-bottom: 20px;font-size: 24px;font-family: '微软雅黑';" class="row">
+		  							<div id="dl" class="col-md-6 col-lg-6 center">
+			  							<p>登录</p>
+		  							</div>
+		  							<div id="zc" class="col-md-6 col-lg-6 center">
+		  								<p>注册</p>
+		  							</div>
+		  						</div>
+		  					</div>
+		  						<div style="margin-top:60px; "><!-- 表单begin -->
+		  								<div class="row margin20">
+					  						<div class="col-md-12 col-lg-12 " >
+					  							<form class="form-horizontal" role="form">
+					  							<div class="form-group row">
+				  									  <div class="col-md-2 col-lg-2  ">
+												      </div>
+												      <div class="col-md-8 col-lg-8  center">
+												         <input   maxlength="16" required="required" name="userName" type="text" class="form-control"  placeholder="账号">
+												      </div>
+											          <div class="col-md-2 col-lg-2  ">
+												      </div>
+											   </div>
+											   </form>
+					  						</div>
+					  					</div>
+					  					<div class="row margin20">
+					  						<div class="col-md-12 col-lg-12 " >
+					  							<form class="form-horizontal" role="form">
+					  							<div class="form-group row">
+				  									  <div class="col-md-2 col-lg-2  ">
+												      </div>
+												      <div class="col-md-8 col-lg-8  center">
+												         <input  maxlength="16" required="required" name="userPass" type="password"  class="form-control"  placeholder="密码">
+												      </div>
+											          <div class="col-md-2 col-lg-2  ">
+												      </div>
+											   </div>
+											   </form>
+					  						</div>
+					  					</div>
+					  					<div class="row margin20">
+					  						<div class="col-md-12 col-lg-12 " >
+					  							<form class="form-horizontal" role="form">
+					  							<div class="form-group row">
+				  									  <div class="col-md-2 col-lg-2  ">
+												      </div>
+												      <div class="col-md-8 col-lg-8  center">
+						      <script type="text/javascript">
+						      		$(function(){
+						      		
+						      			$("button").click(function(){
+						      			var name=$("input[type='text']").val();
+						      			var pass=$("input[type='password']").val();
+
+
+						      			$.post("/MyTest01/user/login.action", { username: name, password: pass },
+										   function(data){
+										     if(data=="ok"){
+										     	alert("登陆成功");
+											 }else{
+												 alert("账号或密码有误！");
+											 }
+									    },"text");
+						      		});
+						      		
+						      		});
+						      </script>
+												         <button id="denglu" style="background: red;color:white; " class="btn btn-block">登陆</button>
+												         <button id="zhuce"  style="background: red;color:white; " class="btn btn-block">注册</button>
+												      </div>
+											          <div class="col-md-2 col-lg-2  ">
+												      </div>
+											   </div>
+											   </form>
+					  						</div>
+					  					</div>
+		  						</div><!-- 表单 -->
+		  					</div>
+		  				</div>
+		  		</div>
+	  		</div>
+	  </div>
+	  
+  </body>
+</html>
