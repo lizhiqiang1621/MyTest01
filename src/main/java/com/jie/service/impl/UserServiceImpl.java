@@ -23,6 +23,7 @@ public class UserServiceImpl implements UserService {
     @Transactional(propagation = Propagation.REQUIRED,readOnly = true)
     public Users login(Users u){
            Users u1=um.selectByNameAndPwd(u);
+           System.out.println(u1.getUsername());
            return u1;
     }
 }
